@@ -1,50 +1,78 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiMenuAlt3, HiX } from 'react-icons/hi'; // Mobile icons
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  // Mobile menu open/close karne ke liye state
   const [isOpen, setIsOpen] = useState(false);
 
+  const menuItems = [
+    { name: 'About Us', path: '/about' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Packages', path: '/packages' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Available Slots', path: '/booking' },
+  ];
+
   return (
-    <nav className="bg-white border-b border-[#eee6de] sticky top-0 z-50 px-6 py-4 md:px-20">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
+    <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-[#eee6de] px-6 py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         
-        {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 bg-[#f3efea] rounded-full flex items-center justify-center font-playfair font-bold text-xs border border-[#d4c3b3]">
-            EM
-          </div>
-          <span className="font-bold tracking-[0.2em] text-sm md:text-base">Era Makeover</span>
+        {/* Logo */}
+        <Link to="/" className="text-xl font-playfair italic font-bold tracking-tighter">
+          ERAM <span className="text-[#a89078]">MAKEOVERS</span>
         </Link>
 
-        {/* Desktop Menu - md:flex ka matlab hai tablet/laptop par dikhega, mobile par hidden */}
-        <ul className="hidden md:flex gap-10 text-[10px] tracking-[0.3em] font-medium text-gray-600">
-          <li><Link to="/about" className="hover:text-[#a89078] transition-colors">ABOUT US</Link></li>
-          <li><Link to="/portfolio" className="hover:text-[#a89078] transition-colors">PORTFOLIO</Link></li>
-          <li><Link to="/packages" className="hover:text-[#a89078] transition-colors">PACKAGES</Link></li>
-          <li><Link to="/contact" className="hover:text-[#a89078] transition-colors">CONTACT US</Link></li>
-          <li><Link to="/booking" className="hover:text-[#a89078] transition-colors">Available Slots</Link></li>
-        </ul>
+        {/* Desktop Menu - Hidden on both Mobile AND Tablets (lg breakpoint) */}
+        <div className="hidden lg:flex space-x-8">
+          {menuItems.map((item) => (
+            <Link 
+              key={item.name}
+              to={item.path}
+              className="text-[10px] tracking-[0.4em] uppercase text-gray-500 hover:text-[#d4c3b3] transition-all font-montserrat"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
 
-        {/* Hamburger Icon - Only visible on Mobile */}
-        <div className="md:hidden text-2xl cursor-pointer text-[#2c2c2c]" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <HiX /> : <HiMenuAlt3 />}
+        {/* Mobile & Tablet Menu Button - Visible on lg screens and below */}
+        <div className="lg:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-[#2c2c2c] p-2">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown - Smooth Animation ke liye simple conditional rendering */}
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-white border-b border-[#eee6de] md:hidden shadow-xl animate-fadeIn">
-          <ul className="flex flex-col items-center py-8 gap-6 text-[11px] tracking-[0.3em] font-bold text-gray-700">
-            <li><Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">ABOUT US</Link></li>
-            <li><Link to="/portfolio" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">PORTFOLIO</Link></li>
-            <li><Link to="/packages" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">PACKAGES</Link></li>
-            <li><Link to="/contact" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">CONTACT US</Link></li>
-            <li><Link to="/booking" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">Available Slots</Link></li>
-          </ul>
-        </div>
-      )}
+      {/* Mobile & Tablet Sidebar/Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white border-t border-[#eee6de] overflow-hidden"
+          >
+            <div className="flex flex-col py-6 space-y-6 px-6">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-[11px] tracking-[0.3em] uppercase text-gray-600 font-montserrat"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

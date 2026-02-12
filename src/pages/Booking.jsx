@@ -10,7 +10,6 @@ const Booking = () => {
     const generateDates = () => {
       const dates = [];
       const today = new Date();
-      // Option 2: Generating 90 days for full month access
       for (let i = 0; i < 90; i++) {
         const nextDate = new Date();
         nextDate.setDate(today.getDate() + i);
@@ -28,30 +27,30 @@ const Booking = () => {
   const slots = ["08:00 AM", "10:30 AM", "01:00 PM", "03:30 PM", "06:00 PM", "08:30 PM"];
 
   return (
-    <div className="bg-[#fdfbf9] min-h-screen py-10 md:py-24 px-4 sm:px-10 md:px-20 font-montserrat">
+    <div className="bg-[#fdfbf9] min-h-screen py-10 lg:py-24 px-4 sm:px-10 lg:px-20 font-montserrat">
       
-      {/* Header - Scaled for Mobile */}
+      {/* Header - Mobile styling extended to Tablets (lg breakpoint used) */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-10 md:mb-16"
+        className="text-center mb-10 lg:mb-16"
       >
-        <h2 className="text-[9px] md:text-sm tracking-[0.3em] md:tracking-[0.4em] uppercase text-gray-400 mb-2">Availability</h2>
-        <h1 className="text-2xl md:text-5xl font-playfair italic text-[#2c2c2c]">Reserve Your Slot</h1>
-        <div className="w-12 md:w-16 h-[1px] bg-[#d4c3b3] mx-auto mt-4"></div>
+        <h2 className="text-[9px] lg:text-sm tracking-[0.3em] lg:tracking-[0.4em] uppercase text-gray-400 mb-2">Availability</h2>
+        <h1 className="text-2xl lg:text-5xl font-playfair italic text-[#2c2c2c]">Reserve Your Slot</h1>
+        <div className="w-12 lg:w-16 h-[1px] bg-[#d4c3b3] mx-auto mt-4"></div>
       </motion.div>
 
-      {/* Main Layout Grid - Mobile: 1 col, Desktop: 3 cols */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+      {/* Main Layout Grid - Will remain 1 column until Large screens (Laptops) */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
         
-        {/* Left Section: Date & Time (Takes 2/3 space on desktop) */}
+        {/* Left Section: Date & Time */}
         <div className="lg:col-span-2 space-y-12">
           
-          {/* 1. Date Selection - Horizontal Scroll on Mobile */}
+          {/* 1. Date Selection - Horizontal Scroll for Mobile AND Tablets */}
           <section>
             <div className="flex justify-between items-end mb-6">
-              <h3 className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-[#a89078]">1. Select Date</h3>
-              <span className="text-[9px] text-gray-400 italic md:hidden">Swipe →</span>
+              <h3 className="text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase text-[#a89078]">1. Select Date</h3>
+              <span className="text-[9px] text-gray-400 italic lg:hidden">Swipe →</span>
             </div>
             
             <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x touch-pan-x">
@@ -59,29 +58,29 @@ const Booking = () => {
                 <button
                   key={index}
                   onClick={() => setSelectedDay(item)}
-                  className={`flex-shrink-0 w-16 md:w-20 py-4 flex flex-col items-center border transition-all snap-start ${
+                  className={`flex-shrink-0 w-16 lg:w-20 py-4 flex flex-col items-center border transition-all snap-start ${
                     selectedDay?.fullDate === item.fullDate 
                     ? 'bg-[#2c2c2c] border-[#2c2c2c] text-white shadow-md scale-105' 
                     : 'bg-white border-[#eee6de] text-gray-500'
                   }`}
                 >
-                  <span className="text-[8px] md:text-[10px] uppercase mb-1">{item.day}</span>
-                  <span className="text-sm md:text-base font-bold">{item.date.split(' ')[0]}</span>
-                  <span className="text-[8px] md:text-[9px] opacity-60 uppercase">{item.date.split(' ')[1]}</span>
+                  <span className="text-[8px] lg:text-[10px] uppercase mb-1">{item.day}</span>
+                  <span className="text-sm lg:text-base font-bold">{item.date.split(' ')[0]}</span>
+                  <span className="text-[8px] lg:text-[9px] opacity-60 uppercase">{item.date.split(' ')[1]}</span>
                 </button>
               ))}
             </div>
           </section>
 
-          {/* 2. Time Slots - Grid Layout */}
+          {/* 2. Time Slots - Stays in 2 columns for Tablets (Mobile style) */}
           <section>
-            <h3 className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 text-[#a89078]">2. Available Slots</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+            <h3 className="text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase mb-6 text-[#a89078]">2. Available Slots</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
               {slots.map((time, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedTime(time)}
-                  className={`py-3 md:py-4 text-[10px] md:text-xs tracking-widest border transition-all ${
+                  className={`py-3 lg:py-4 text-[10px] lg:text-xs tracking-widest border transition-all ${
                     selectedTime === time 
                     ? 'bg-[#d4c3b3] border-[#d4c3b3] text-white' 
                     : 'bg-white border-[#eee6de] text-gray-600 hover:bg-[#fcfaf8]'
@@ -94,21 +93,21 @@ const Booking = () => {
           </section>
         </div>
 
-        {/* Right Section: Summary Card - Mobile: Bottom, Desktop: Sticky Right */}
+        {/* Right Section: Summary Card - Will stack below on Tablets */}
         <div className="lg:col-span-1">
-          <div className="bg-white border border-[#eee6de] p-6 md:p-8 sticky top-24 shadow-sm rounded-sm">
-            <h3 className="text-xs md:text-sm font-bold uppercase tracking-widest mb-6 border-b pb-4">Booking Summary</h3>
+          <div className="bg-white border border-[#eee6de] p-6 lg:p-8 lg:sticky lg:top-24 shadow-sm rounded-sm">
+            <h3 className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-6 border-b pb-4">Booking Summary</h3>
             
             <div className="space-y-4 mb-8">
-              <div className="flex justify-between text-[11px] md:text-xs">
+              <div className="flex justify-between text-[11px] lg:text-xs">
                 <span className="text-gray-400">Date:</span>
                 <span className="font-medium">{selectedDay ? `${selectedDay.day}, ${selectedDay.date}` : "—"}</span>
               </div>
-              <div className="flex justify-between text-[11px] md:text-xs">
+              <div className="flex justify-between text-[11px] lg:text-xs">
                 <span className="text-gray-400">Time:</span>
                 <span className="font-medium">{selectedTime || "—"}</span>
               </div>
-              <div className="flex justify-between text-[11px] md:text-xs">
+              <div className="flex justify-between text-[11px] lg:text-xs">
                 <span className="text-gray-400">Artist:</span>
                 <span className="font-medium">Lead Artist</span>
               </div>

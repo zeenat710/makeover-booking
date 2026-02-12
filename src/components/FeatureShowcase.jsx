@@ -41,7 +41,7 @@ const FeatureShowcase = () => (
         </div>
         
         <p className="text-gray-600 leading-relaxed text-base md:text-lg text-justify">
-          At Era Makeover, we believe that every face tells a unique story. Our approach to bridal artistry isn't just about applying products; it's about a deep understanding of skin anatomy and color theory.
+          At Eram Makeover, we believe that every face tells a unique story. Our approach to bridal artistry isn't just about applying products; it's about a deep understanding of skin anatomy and color theory.
         </p>
 
         {/* Feature Grid: Mobile par 1 column, sm screens se 2 columns */}

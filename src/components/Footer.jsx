@@ -8,7 +8,7 @@ const Footer = () => {
         
         {/* Brand Section */}
         <div className="col-span-1 md:col-span-1">
-          <h2 className="font-playfair italic text-2xl text-[#2c2c2c] mb-4">Era Makeover</h2>
+          <h2 className="font-playfair italic text-2xl text-[#2c2c2c] mb-4">Eram Makeover</h2>
           <p className="text-gray-500 text-sm leading-relaxed">
             Enhancing your natural beauty with a touch of elegance and modern artistry.
           </p>
@@ -22,7 +22,6 @@ const Footer = () => {
             <li><Link to="/about" className="hover:text-black transition">About</Link></li>
             <li><Link to="/portfolio" className="hover:text-black transition">Portfolio</Link></li>
             <li><Link to="/packages" className="hover:text-black transition">Packages</Link></li>
-            <li><Link to="/packages" className="hover:text-black transition">Available Slots</Link></li>
           </ul>
         </div>
 
@@ -49,7 +48,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-[#eee6de] pt-8 text-center text-[10px] tracking-[0.2em] text-gray-400 uppercase">
-        © 2026 Era Makeover. Artistry. All Rights Reserved.
+        © 2026 Eram Makeover. Artistry. All Rights Reserved.
       </div>
     </footer>
   );

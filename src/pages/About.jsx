@@ -69,7 +69,7 @@ const About = () => {
         >
           <h3 className="uppercase tracking-[0.2em] font-bold mb-4 text-xs md:text-sm text-[#a89078]">Our Story</h3>
           <p className="text-gray-600 text-sm leading-[1.8] text-justify md:text-left">
-            Founded in 2020 by Era, Era Makeover was created as a sanctuary for beauty transformation. What started as a small passion project has grown into a premier destination for brides and editorial shoots across the country.
+            Founded in 2020 by Eram, Eram Makeover was created as a sanctuary for beauty transformation. What started as a small passion project has grown into a premier destination for brides and editorial shoots across the country.
           </p>
         </motion.div>
       </div>

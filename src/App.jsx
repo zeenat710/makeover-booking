@@ -12,10 +12,14 @@ import InquiryPage from './pages/InquiryPage';
 import Booking from './pages/Booking';
 
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop'; // Scroll logic import
 
 function App() {
   return (
     <Router>
+      {/* 1. ScrollToTop ko Router ke andar aur div ke upar rakha hai */}
+      <ScrollToTop /> 
+
       <div className="flex flex-col min-h-screen">
         <Navbar />
         
@@ -33,7 +37,6 @@ function App() {
           </Routes>
         </main>
 
-        {/* 4. Footer hamesha yahan dikhega */}
         <Footer />
       </div>
     </Router>

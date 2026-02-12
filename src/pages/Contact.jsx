@@ -25,7 +25,7 @@ const Contact = () => {
 
           <div>
             <h3 className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold mb-4 md:mb-6 text-[#a89078]">Appointments</h3>
-            <p className="text-gray-600 text-sm">Email: hello@eramakeover.com</p>
+            <p className="text-gray-600 text-sm">Email: hello@erammakeover.com</p>
             <p className="text-gray-600 text-sm mt-2">Phone: +91 98765 43210</p>
           </div>
 
