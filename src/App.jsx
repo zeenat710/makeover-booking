@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import BookingInfo from './pages/BookingInfo.jsx';
 import CategoryPage from './pages/CategoryPage';
 import InquiryPage from './pages/InquiryPage';
+import Booking from './pages/Booking';
 
 import Footer from './components/Footer';
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/booking-info" element={<BookingInfo />} />
             <Route path="/portfolio/:categoryName" element={<CategoryPage />} />
             <Route path="/inquiry" element={<InquiryPage />} />
+            <Route path="/booking" element={<Booking />} />
           </Routes>
         </main>
 

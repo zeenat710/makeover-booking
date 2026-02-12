@@ -24,6 +24,7 @@ const Navbar = () => {
           <li><Link to="/portfolio" className="hover:text-[#a89078] transition-colors">PORTFOLIO</Link></li>
           <li><Link to="/packages" className="hover:text-[#a89078] transition-colors">PACKAGES</Link></li>
           <li><Link to="/contact" className="hover:text-[#a89078] transition-colors">CONTACT US</Link></li>
+          <li><Link to="/booking" className="hover:text-[#a89078] transition-colors">Available Slots</Link></li>
         </ul>
 
         {/* Hamburger Icon - Only visible on Mobile */}
@@ -40,6 +41,7 @@ const Navbar = () => {
             <li><Link to="/portfolio" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">PORTFOLIO</Link></li>
             <li><Link to="/packages" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">PACKAGES</Link></li>
             <li><Link to="/contact" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">CONTACT US</Link></li>
+            <li><Link to="/booking" onClick={() => setIsOpen(false)} className="hover:text-[#a89078]">Available Slots</Link></li>
           </ul>
         </div>
       )}

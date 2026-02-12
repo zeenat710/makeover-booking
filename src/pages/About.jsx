@@ -34,9 +34,17 @@ const About = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-5xl mx-auto bg-white p-2 md:p-4 shadow-xl mb-16 md:mb-24"
+        /* Changed max-width to 3xl to keep square images from becoming too giant */
+        className="max-w-3xl mx-auto bg-white p-2 md:p-4 shadow-2xl mb-16 md:mb-24"
       >
-        <img src={aboutImg} alt="Makeup session" className="w-full h-[300px] md:h-[500px] object-cover" />
+        <div className="relative overflow-hidden bg-[#fdfbf9]">
+          <img 
+            src={aboutImg} 
+            alt="Lead Makeup Artist" 
+            /* h-auto allows the frame to adapt to the image's natural shape */
+            className="w-full h-auto object-contain block" 
+          />
+        </div>
       </motion.div>
 
       {/* Philosophy & Story Grid - Stackable */}
@@ -66,33 +74,43 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* Team Section - Responsive Grid */}
-      <div className="max-w-6xl mx-auto mb-16 md:mb-24">
-        <h2 className="text-center text-[10px] tracking-[0.4em] uppercase text-gray-400 mb-12 md:mb-16">The Creative Minds</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 md:gap-12">
-          {[
-            { img: team1, name: "Olivia Brown", role: "Lead Makeup Artist" },
-            { img: team2, name: "Isabella Rodriguez", role: "Beauty Director" },
-            { img: team3, name: "Mei Lin", role: "Senior Stylist" }
-          ].map((member, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="flex flex-col items-center group"
-            >
-              <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border border-[#d4c3b3] p-2 mb-6 transition-transform duration-500 group-hover:scale-105">
-                <img 
-                  src={member.img} 
-                  alt={member.name} 
-                  className="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
-                />
-              </div>
-              <h4 className="font-bold text-sm tracking-widest uppercase mb-1">{member.name}</h4>
-              <p className="text-xs text-gray-500 italic">{member.role}</p>
-            </motion.div>
+      {/* Team Section - Responsive Grid (Static Version) */}
+    <div className="max-w-6xl mx-auto mb-16 md:mb-24">
+      <h2 className="text-center text-[10px] tracking-[0.4em] uppercase text-gray-400 mb-12 md:mb-16">
+        The Creative Minds
+      </h2>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 md:gap-12">
+        {[
+          { img: team1, name: "Ishani Verma", role: "Lead Makeup Artist" },
+          { img: team2, name: "Zoya Khan", role: "Beauty Director" },
+          { img: team3, name: "Riya Kapoor", role: "Senior Stylist" }
+        ].map((member, index) => (
+          <motion.div 
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2 }}
+            className="flex flex-col items-center" // 'group' class removed as hover isn't needed
+          >
+            {/* Border Wrapper - Scaling animation removed */}
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border border-[#d4c3b3] p-2 mb-6">
+              <img 
+                src={member.img} 
+                alt={member.name} 
+                /* Grayscale and hover transition classes removed for a natural look */
+                className="w-full h-full rounded-full object-cover" 
+              />
+            </div>
+            
+            <h4 className="font-bold text-sm tracking-widest uppercase mb-1 text-[#2c2c2c]">
+              {member.name}
+            </h4>
+            <p className="text-xs text-gray-500 italic">
+              {member.role}
+            </p>
+          </motion.div>
           ))}
         </div>
       </div>
